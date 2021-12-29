@@ -12,9 +12,26 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	
-//!OOP
+//!Test
+	"Yev test": {
+		"prefix": "tes",
+		"body": ["use PHPUnit\\Framework\\TestCase;",
+			"",
+			"class OperationsTest extends TestCase",
+			"{",
+			"\tpublic function ${1:Nombre representativo del test}()",
+			"\t{",
+			"\t\t$$expected = ${2};",
+			"\t\t$$result = ${3:Nombre de la funcion a testear con paso de parametros};",
+			"\t\t",
+			"\t\t${4:$$this->assertEquals($$expected, $$result);}",
+			"\t}",
+			"}",
+		],
+		"description": "Test"
+	},
 
+//!OOP
 	"Yev this": {
 		"prefix": "thi",
 		"body": ["$$this->${1}",

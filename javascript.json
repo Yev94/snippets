@@ -12,7 +12,28 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
+//!Test
+	"Yev testExport": {
+		"prefix": "tes",
+		"body": ["module.exports = {${1:Funciones}};",
+		],
+		"description": "Test Export"
+	},
 
+	"Yev testImport": {
+		"prefix": "tes",
+		"body": ["const {${1:Funciones}} = require('${2:Archivo}');",
+			"describe('${1:Funciones}', () => {",
+			"\ttest('${3:Nombre representativo del test}', () => {",
+			"\t\tconst expected = ${4};",
+			"\t\tconst result = ${5};",
+			"\t\texpect(result).toBe(expected);",
+			"\t})",
+			"})",
+		],
+		"description": "Test Export"
+	},
+	
 //!OOP
 	"Yev this": {
 		"prefix": "thi",
