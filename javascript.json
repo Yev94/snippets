@@ -1,0 +1,674 @@
+{
+	// Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+//!OOP
+	"Yev this": {
+		"prefix": "thi",
+		"body": ["this.${1}",
+		],
+		"description": "Funcion this"
+	},
+
+	"Yev constructor": {
+		"prefix": "cons",
+		"body": ["constructor(${1}){",
+			"this.${2}",
+			"}"
+		],
+		"description": "Funcion constructor"
+	},
+
+	"Yev getElementByID": {
+		"prefix": "gete",
+		"body": ["document.getElementByID('${1}')",
+
+		],
+		"description": "Funcion constructor"
+	},
+
+//!Funciones
+	"Yev typeof": {
+		"prefix": "typ",
+		"body": ["typeof ",
+		],
+		"description": "Funcion typeof"
+	},
+
+	"Yev isNaN": {
+		"prefix": "isn",
+		"body": ["isNaN(${1})",
+		],
+		"description": "Funcion para saber si es Not a Number"
+	},
+
+	"Yev Number": {
+		"prefix": "isn",
+		"body": ["Number(${1})",
+		],
+		"description": "Funcion para convertir a numero"
+	},
+
+	"Yev parseInt": {
+		"prefix": "par",
+		"body": ["parseInt(${1})",
+		],
+		"description": "Funcion para convertir a numero"
+	},
+
+	"Yev String": {
+		"prefix": "str",
+		"body": ["string(${1})",
+		],
+		"description": "Funcion para convertir a string"
+	},
+
+	"Yev Bool": {
+		"prefix": "boo",
+		"body": ["boolean(${1})",
+		],
+		"description": "Funcion para convertir a string"
+	},
+
+	//Para mandar escritos
+	"Yev alert": {
+		"prefix": "ale",
+		"body": ["alert(${1});",
+		],
+		"description": "Funcion para sacar un alert"
+	},
+
+	"Yev console.log": {
+		"prefix": "con",
+		"body": ["console.log(${1});",
+		],
+		"description": "Funcion para mostrar rdo en consola"
+	},
+
+	"Yev document.write": {
+		"prefix": "doc",
+		"body": ["document.write(${1});",
+		],
+		"description": "Funcion para mostrar en XML"
+	},
+
+	//Para recibir escrito de
+	"Yev prompt(cuadro de dialogo)": {
+		"prefix": "pro",
+		"body": ["promp(${1});",
+		],
+		"description": "Funcion para sacar prompt"
+	},
+
+	"Yev ${} (interpolación strings)": {
+		"prefix": "$",
+		"body": ["${${1}}",
+		],
+		"description": "Funcion para poner variable en string"
+	},
+	
+	//Manejo de strings
+
+	"Yev lenght": {
+		"prefix": ".len",
+		"body": [".length",
+		],
+		"description": "Funcion para sacar longitud"
+	},
+
+	"Yev indexOf": {
+		"prefix": ".ind",
+		"body": [".indexOf(${1:Valor buscado},${2:Posicion inicial})",
+		],
+		"description": "Funcion para sacar el indice a partir de la palabra"
+	},
+
+	"Yev charAt": {
+		"prefix": ".cha",
+		"body": [".indexOf(${1:Valor buscado},${2:Posicion inicial})",
+		],
+		"description": "Funcion para sacar la letra a partir del indice"
+	},
+	
+
+	"Yev match": {
+		"prefix": ".mat",
+		"body": [".match(${1:Val a matchear})",
+		],
+		"description": "Funcion para saber si 2 srtings son iguales, usado con exp reg"
+	},
+
+	"Yev test": {
+		"prefix": ".tes",
+		"body": [".test(${1:Val a encontrar})",
+		],
+		"description": "Funcion para saber se encuentra la cadena, usado con exp reg"
+	},
+
+	"Yev toUpperCase": {
+		"prefix": ".tou",
+		"body": [".toUpperCase()",
+		],
+		"description": "Funcion poner string en mayuscula"
+	},
+	
+
+	"Yev toLowerCase": {
+		"prefix": ".tol",
+		"body": [".toLowerCase()",
+		],
+		"description": "Funcion poner string en minuscula"
+	},
+
+	"Yev replace": {
+		"prefix": ".rep",
+		"body": [".replace(${1:Val a reemplazar},${2:Val por el que se reemplaza})",
+		],
+		"description": "Funcion para reemplazar strings"
+	},
+
+	"Yev substring": {
+		"prefix": ".sub",
+		"body": [".substring(${1:indice inical},${2:num cadenas desde indice de inicio donde i0 = 1})",
+		],
+		"description": "Funcion para sacar una cadena"
+	},
+	
+	
+	"Yev delimitador": {
+		"prefix": "delim",
+		"body": ["let delimitador = ' ';",
+		],
+		"description": "Complemento para split"
+	},
+	"Yev split": {
+		"prefix": ".spl",
+		"body": [".Split(${1:delimitador (snip = delim)})",
+		],
+		"description": "Funcion para dividir en un array el string"
+	},
+	
+	//Manejo de arrays
+	"Yev join": {
+		"prefix": ".joi",
+		"body": [".join(${1:','})",
+		],
+		"description": "Funcion para imprimir indices array en bonito"
+	},
+
+	"Yev findindex": {
+		"prefix": ".fin",
+		"body": [".findindex(e => e ${1:>/</==} ${2:eBuscada})",
+		],
+		"description": "Funcion para buscar el indice de la expresion buscada"
+	},
+
+	"Yev unshift": {
+		"prefix": ".uns",
+		"body": [".unshift(${1:valor a añadir al principio})",
+		],
+		"description": "Funcion añadir un val al principio del array"
+	},
+
+	"Yev push": {
+		"prefix": ".pop",
+		"body": [".pop()",
+		],
+		"description": "Funcion para eliminar val al final del array"
+	},
+
+	"Yev shift": {
+		"prefix": ".shi",
+		"body": [".shift()",
+		],
+		"description": "Funcion para eliminar val al principio del array"
+	},
+
+	"Yev pop": {
+		"prefix": ".po",
+		"body": [".pop()",
+		],
+		"description": "Funcion para eliminar val al final del array"
+	},
+
+	"Yev concat": {
+		"prefix": ".con",
+		"body": [".concat(${1:Array a concatenar})",
+		],
+		"description": "Funcion para añadir array2 al final del array1"
+	},
+
+	"Yev delete": {
+		"prefix": "del",
+		"body": ["delete ${1:Array}[${2:posicion}]",
+		],
+		"description": "Funcion para elmininar un indice del array"
+	},
+
+	"Yev comparar": {
+		"prefix": "comp",
+		"body": ["function comparar(a, b){return a - b}",
+		],
+		"description": "Funcion para añadir al sort y comparar numeros"
+	},
+	"Yev sort": {
+		"prefix": ".sor",
+		"body": [".sort(${1:ordena por ASCI (snip = comp ordenar num)})",
+		],
+		"description": "Funcion para añadir array2 al final del array1"
+	},
+
+	"Yev reverse": {
+		"prefix": ".rev",
+		"body": [".reverse()",
+		],
+		"description": "Funcion poner el array al reves"
+	},
+
+	"Yev slice": {
+		"prefix": ".sli",
+		"body": [".slice(${1:indice inicial (si (-) Empezamos por la dcha)}, ${2:incide final (si (-) Empezamos por la dcha)})",
+		],
+		"description": "Funcion para sacar un subarray"
+	},
+
+	"Yev splice": {
+		"prefix": ".spli",
+		"body": [".splice(${1:indie inicial}, ${2:num indices a borrar}${3:, }${4:var a instertar})",
+		],
+		"description": "Funcion para concetar al array otras variables (tambien puede elminar indices del original)"
+	},
+
+	"Yev map": {
+		"prefix": ".ma",
+		"body": [".map(function(${1:valor}){",
+			"\t${2:// Instrucción}",
+			"\t${3:return valor}",
+			"})"
+		],
+		"description": "Funcion para pasar por un funcion cada elemento del array"
+	},
+	
+	//Manejo de fechas
+	"Yev date": {
+		"prefix": "dat",
+		"body": ["new date(${1:año}${2:, }${3:mes}${4:, }${5:dia}) ${6: //Si no se le pasan argumentos devuelve la fecha de hoy}"
+		],
+		"description": "Funcion para poner fecha"
+	},
+
+	"Yev toDateString": {
+		"prefix": ".tod",
+		"body": [".toDateString${1: //para pasarlo a formato español es con toLocalDateString (snip = tolo)}"
+		],
+		"description": "Funcion poner fecha en formato corto"
+	},
+	"Yev toLocalDateString": {
+		"prefix": ".tolo",
+		"body": [".toLocalDateString(${1:'es-ES'}, ${2:formato})"
+		],
+		"description": "Funcion poner fecha al formato del pais"
+	},
+
+	"Yev getDate": {
+		"prefix": ".getd",
+		"body": [".getDate()"
+		],
+		"description": "Funcion sacar el día"
+	},
+	
+	//Math
+	"Yev min-max": {
+		"prefix": "min",
+		"body": ["let min = ${1};",
+			"let max = ${2};"
+		],
+		"description": "Funcion random"
+	},
+	"Yev random": {
+		"prefix": "ran",
+		"body": ["Math.ceil(Math.floor()*(${1:max} - ${2:min} + 1) + ${2:min}) ${3: //Para declarar min max var -> sip = min}"
+		],
+		"description": "Funcion random"
+	},
+
+	"Yev ceil": {
+		"prefix": "cei",
+		"body": ["Math.ceil(${1})"
+		],
+		"description": "Funcion para rendondear num hacia arriba"
+	},
+
+	"Yev floor": {
+		"prefix": "floo",
+		"body": ["Math.floor(${1})"
+		],
+		"description": "Funcion para rendondear num hacia abajo"
+	},
+
+	"Yev round": {
+		"prefix": "rou",
+		"body": ["Math.round(${1})"
+		],
+		"description": "Funcion para rendondear num a entero"
+	},
+
+	"Yev sqrt": {
+		"prefix": "sqr",
+		"body": ["Math.sqrt(${1})"
+		],
+		"description": "Funcion para sacar raiz cuadrada"
+	},
+
+	"Yev pow": {
+		"prefix": "pow",
+		"body": ["Math.pow(${1:base}, ${2:exponente})"
+		],
+		"description": "Funcion para sacar exponencial"
+	},
+
+	"Yev abs": {
+		"prefix": "abs",
+		"body": ["Math.abs(${1})"
+		],
+		"description": "Funcion para sacar valor absoluto"
+	},
+	
+	"Yev PI": {
+		"prefix": "pi",
+		"body": ["Math.PI"
+		],
+		"description": "Funcion para sacar PI"
+	},
+
+	"Yev cos": {
+		"prefix": "cos",
+		"body": ["Math.cos(${1})"
+		],
+		"description": "Funcion para sacar coseno"
+	},
+	
+	//Creacion
+	"Yev function": {
+		"prefix": "fun",
+		"body": ["function ${1}(${2}){",
+			"\t${3:// Instrucción}",
+			"}"
+		],
+		"description": "Funcion para sacar coseno"
+	},
+
+//!Control de flujo
+	"Yev if": {
+		"prefix": "if",
+		"body": ["if(${1}){",
+			"\t${2:;}",
+			"}",
+		],
+		"description": "Control de flujo if"
+	},
+	"Yev ifElse": {
+		"prefix": "ife",
+		"body": ["if(${1}){",
+			"\t${2:;}",
+			"} else {",
+			"\t${3:;}",
+			"}",
+		],
+		"description": "Control de flujo if else"
+	},
+	"Yev else": {
+		"prefix": "els",
+		"body": ["else(${1}){",
+			"\t${2:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo else"
+	},
+	"Yev elseIf": {
+		"prefix": "else if",
+		"body": ["else if(${1}){",
+			"\t${2:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo if else"
+	},
+	"Yev SwitchCase": {
+		"prefix": "swi",
+		"body": ["switch (${1}) {",
+			"\tcase ${2}:",
+			"\t\t${3:// Instrucción};",
+			"\t\tbreak;",
+			"\tcase ${4}:",
+			"\t\t${5:// Instrucción};",
+			"\t\tbreak;",
+			"\tdefault:",
+			"\t\t${6:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo switch case"
+	},
+	"Yev for": {
+		"prefix": "for",
+		"body": ["for(let ${1} = ${2}; ${1}${3} ; ${1}${4}) {",
+			"\t${5:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo for"
+	},
+	"Yev fori": {
+		"prefix": "fori",
+		"body": ["for(let $i = ${1}; $i${2} ; $i${3}) {",
+			"\t${4:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo fori"
+	},
+	"Yev forj": {
+		"prefix": "forj",
+		"body": ["for(let $j = ${1}; $j${2} ; $j${3}) {",
+			"\t${4:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo forj"
+	},
+	"Yev fora": {
+		"prefix": "fora",
+		"body": ["for(let $i = ${1}; $i < ${2:Array}.length; $i++) {",
+			"\t${3:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo fora"
+	},
+	"Yev while": {
+		"prefix": "whi",
+		"body": ["while(${1:condicion}){",
+			"\t${2:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo while"
+	},
+	"Yev doWhile": {
+		"prefix": "do",
+		"body": ["do{",
+			"\t${1:// Instrucción};",
+			"}while(${2:condicion})",
+		],
+		"description": "Control de flujo do while"
+	},
+
+	"Yev foreach": {
+		"prefix": "fore",
+		"body": ["${1:array}.forEach(e => ${2});",
+		],
+		"description": "Control de flujo forecach"
+	},
+	"Yev tryCatch": {
+		"prefix": "tr",
+		"body": ["try{",
+			"\t${1}",
+			"} catch (error){",
+			"\tconsole.error(error); //Imprimimos el error",
+			"}",
+		],
+		"description": "Control de flujo try catch"
+	},
+	"Yev tryCatchFinally": {
+		"prefix": "try",
+		"body": ["try{",
+			"\t${1}",
+			"} catch (error){",
+			"\tconsole.error(error); //Imprimimos el error",
+			"}finally{",
+			"\t${2:// Instrucción}",
+			"}",
+		],
+		"description": "Control de flujo Try Catch finally"
+	},
+	
+//!Variables
+	"Yev Var": {
+		"prefix": "v",
+		"body": ["var ${1} = ${2}",
+			"${3}",
+		],
+		"description": "Variable var"
+	},
+	"Yev Let": {
+		"prefix": "l",
+		"body": ["let ${1} = ${2}",
+			"${3}",
+		],
+		"description": "Variable let"
+	},
+
+	"Yev Const": {
+		"prefix": "c",
+		"body": ["const ${1} = ${2}",
+			"${3}",
+		],
+		"description": "Variable let"
+	},
+
+	"Yev Array": {
+		"prefix": "arr",
+		"body": ["new Array(${1})",
+			"${3}",
+		],
+		"description": "Variable Array"
+	},
+
+//!Operadores
+	"Yev =": {
+		"prefix": "=",
+		"body": [" = ${1}"],
+		"description": "Operador ="
+	},
+	"Yev ==": {
+		"prefix": "==",
+		"body": [" == ${1}"],
+		"description": "Operador =="
+	},
+	"Yev ===": {
+		"prefix": "===",
+		"body": [" === ${1}"],
+		"description": "Operador ==="
+	},
+	"Yev !=": {
+		"prefix": "!=",
+		"body": [" != ${1}"],
+		"description": "Operador !="
+	},
+	"Yev !==": {
+		"prefix": "!==",
+		"body": [" !== ${1}"],
+		"description": "Operador !=="
+	},
+	"Yev >": {
+		"prefix": ">",
+		"body": [" > ${1}"],
+		"description": "Operador >"
+	},
+	"Yev >=": {
+		"prefix": ">=",
+		"body": [" >= ${1}"],
+		"description": "Operador >="
+	},
+	"Yev <": {
+		"prefix": "<",
+		"body": [" < ${1}"],
+		"description": "Operador <"
+	},
+	"Yev +=": {
+		"prefix": "+=",
+		"body": [" += ${1}"],
+		"description": "Operador +="
+	},
+	"Yev -=": {
+		"prefix": "-=",
+		"body": [" -= ${1}"],
+		"description": "Operador -="
+	},
+	"Yev *=": {
+		"prefix": "*=",
+		"body": [" *= ${1}"],
+		"description": "Operador *="
+	},
+	"Yev /=": {
+		"prefix": "/=",
+		"body": [" /= ${1}"],
+		"description": "Operador /="
+	},
+	"Yev %=": {
+		"prefix": "%=",
+		"body": [" %= ${1}"],
+		"description": "Operador %="
+	},
+	"Yev <=": {
+		"prefix": "<=",
+		"body": [" <= ${1}"],
+		"description": "Operador <="
+	},
+	"Yev +": {
+		"prefix": "+",
+		"body": [" + ${1}"],
+		"description": "Operador +"
+	},
+	"Yev -": {
+		"prefix": "-",
+		"body": [" - ${1}"],
+		"description": "Operador -"
+	},
+	"Yev *": {
+		"prefix": "*",
+		"body": [" * ${1}"],
+		"description": "Operador *"
+	},
+	"Yev /": {
+		"prefix": "/",
+		"body": [" / ${1}"],
+		"description": "Operador /"
+	},
+	"Yev &&": {
+		"prefix": "&",
+		"body": [" && ${1}"],
+		"description": "Operador && (And)"
+	},
+	"Yev ||": {
+		"prefix": "|",
+		"body": [" || ${1}"],
+		"description": "Operador || (Or)"
+	},
+
+}

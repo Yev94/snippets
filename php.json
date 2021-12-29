@@ -1,0 +1,719 @@
+{
+	// Place your snippets for php here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	
+//!OOP
+
+	"Yev this": {
+		"prefix": "thi",
+		"body": ["$$this->${1}",
+			"",
+		],
+		"description": "OOP this"
+	},
+
+	"Yev class": {
+		"prefix": "cla",
+		"body": ["class ${1:Nombre clase}",
+			"{",
+			"\tpublic $${2:propiedad};",
+			"\t",
+			"\tfunction ${3:metodo}($${2:propiedad})",
+			"\t{",
+			"\t\t$$this->${2:propiedad};",
+			"\t}",
+			"}",
+		],
+		"description": "OOP clase"
+	},
+
+	"Yev classPadre": {
+		"prefix": "clas",
+		"body": ["class ${1:Nombre clase hijo} extends ${2:Nombre clase padre}",
+			"{",
+			"\tpublic $${3:propiedad};",
+			"\t",
+			"\t${6://parent::propiedadDelPadre}",
+			"\t${5://parent::funcionDelPadre()}",
+			"\t",
+			"\tfunction ${4:metodo}($${3:propiedad})",
+			"\t{",
+			"\t\t$$this->${3:propiedad};",
+			"\t}",
+			"}",
+		],
+		"description": "OOP clase hijo"
+	},
+
+	//Metodos
+	"Yev constructor": {
+		"prefix": "con",
+		"body": ["function __construct($${1:propiedad})",
+			"{",
+			"\t$$this->${1:propiedad} = $${1:propiedad};",
+			"}"
+		],
+		"description": "OOP constructor"
+	},
+	"Yev constructorHijo": {
+		"prefix": "cons",
+		"body": ["function __construct($${1:propiedad})",
+			"{",
+			"\tparent::__construct($${2:propiedades del padre})",
+			"\t$$this->${1:propiedad} = $${1:propiedad};",
+			"}"
+		],
+		"description": "OOP constructor hijo"
+	},
+
+	"Yev destructor": {
+		"prefix": "des",
+		"body": ["function __desctruct()",
+			"{",
+			"\t${2:// Instrucción};",
+			"}"
+		],
+		"description": "OOP destructor"
+	},
+	"Yev destructorHijo": {
+		"prefix": "dest",
+		"body": ["function __desctruct()",
+			"{",
+			"\t${2:// Instrucción};",
+			"\t${3:parent::__destruct()}",
+			"}"
+		],
+		"description": "OOP destructor hijo"
+	},
+
+	"Yev setter": {
+		"prefix": "set",
+		"body": ["public function __set($$propiedad, $$val)",
+			"{",
+			"\tif(property_exists(__CLASS__, $$propiedad))",
+			"\t{",
+			"\t\t$$this->$$propiedad = $$val;",
+			"\t}",
+			"}"
+		],
+		"description": "OOP setter para cualquier propiedad"
+	},
+	"Yev instanciaSet": {
+		"prefix": "set",
+		"body": ["__set(${1:propiedad}, ${2:valor});",
+		],
+		"description": "OOP set para cualquier propiedad"
+	},
+	"Yev getter": {
+		"prefix": "get",
+		"body": ["public function __set($$propiedad, $$val)",
+			"{",
+			"\tif(property_exists(__CLASS__, $$propiedad))",
+			"\t{",
+			"\t\treturn $$this->$$propiedad;",
+			"\t}",
+			"\t return NULL",
+			"}"
+		],
+		"description": "OOP getter para cualquier propiedad"
+	},
+	"Yev instanciaGet": {
+		"prefix": "get",
+		"body": ["__get(${1:propiedad});",
+		],
+		"description": "OOP get para cualquier propiedad"
+	},
+	
+	//Conexión a BBDD
+	"Yev ConMYSQLiClases": {
+		"prefix": "cone",
+		"body": ["$$con = @new mysqli(${1:host}, ${2:user},  ${3:passwd}, ${4:ddbb}, ${5:port}); //Mediante clases",
+		"if ($$con->connect_error) die('Error:' . $${6:con}->connect_error);",
+		],
+		"description": "OOP conexión con MYSQLi mediante clases" 
+	},
+	"Yev ConMYSQLiProcedimientos": {
+		"prefix": "cone",
+		"body": ["$$con = @mysqli_connect(${1:host}, ${2:user},  ${3:passwd}, ${4:ddbb}, ${5:port}); //Mediante procedimientos",
+		"if ($$con->connect_error) die('Error:' . $${6:con}->connect_error);",
+		],
+		"description": "OOP conexión con MYSQLi mediante procedimientos" 
+	},
+
+	"Yev ConPDO": {
+		"prefix": "cone",
+		"body": ["try",
+			"{",
+			"\t$$con = new PDO('mysql:host=${1:host}; dbname=${2:ddbb}', ${3:user}, ${4:passwd}, ${5:port});",
+			"\t$$con = null;",
+			"}",
+			"catch(PDOException $$e)",
+			"{",
+			"\tdie($$e->getMessage());",
+			"}"
+		],
+		"description": "OOP conexión con PDO" 
+	},
+
+	"Yev closeConMYSQLiClases": {
+		"prefix": "clo",
+		"body": ["$$con->close(); //MSQLi mediante clases",
+			"",
+		],
+		"description": "Cerrar conexión a BBDD con MYSQLi mediante Clases"
+	},
+	"Yev closeConMYSQLiProcedimientos": {
+		"prefix": "clo",
+		"body": ["mysqli_close($$con); //MSQLi mediante Procedimientos",
+			"",
+		],
+		"description": "Cerrar conexión a BBDD con MYSQLi mediante procedimientos"
+	},
+
+//!Funciones
+	//Incluir libreria
+	"Yev include": {
+		"prefix": "in",
+		"body": ["include '${1}';",
+			"",
+		],
+		"description": "Funcion include (Si no está sigue el flujo)"
+	},
+	"Yev includeOnce": {
+		"prefix": "inc",
+		"body": ["include_once '${1}';",
+			"",
+		],
+		"description": "Funcion include once (Solo 1 carga)"
+	},
+	"Yev require": {
+		"prefix": "ret",
+		"body": ["require '${1}';",
+			"",
+		],
+		"description": "Funcion require (Si no está para el flujo)"
+	},
+	"Yev requireOnce": {
+		"prefix": "req",
+		"body": ["require_once '${1}';",
+			"",
+		],
+		"description": "Funcion require once (Si no está para el flujo (Solo 1 carga))"
+	},
+
+	//Comprobar variables
+	"Yev getType": {
+		"prefix": "gett",
+		"body": ["gettype(${1:var})",
+		],
+		"description": "Funcion para comprobar el tipo"
+	},
+
+	"Yev isSet": {
+		"prefix": "iss",
+		"body": ["isset(${1:var})",
+		],
+		"description": "Funcion para saber si esta incializado"
+	},
+
+	"Yev isNaN": {
+		"prefix": "iss",
+		"body": ["is_nan(${1:var})",
+			"",
+		],
+		"description": "Funcion para saber si es NaN (Not a Number)"
+	},
+
+	//Para mandar escritos
+	"Yev echo": {
+		"prefix": "e",
+		"body": ["echo ${1};",
+			"",
+		],
+		"description": "Funcion echo"
+	},
+
+	"Yev print_r": {
+		"prefix": "p",
+		"body": ["print_r(${1:Array)",
+		],
+		"description": "Funcion echo"
+	},
+
+	//Manejo de strings
+	"Yev strComp": {
+		"prefix": "st",
+		"body": ["strcmp(${1:var1}, ${2:Var2})",
+		],
+		"description": "Funcion para comparar sintrgs teniendo en cuenta que conincidan las mayusculas"
+	},
+	"Yev strCaseComp": {
+		"prefix": "str",
+		"body": ["strcmp(${1:var1}, ${2:Var2})",
+		],
+		"description": "Funcion para comparar sintrgs sin tener en cuenta que conincidan las mayusculas"
+	},
+
+	"Yev strToLowerCase": {
+		"prefix": "strtol",
+		"body": ["strtolower(${1})",
+		],
+		"description": "Funcion para covertir a minusculas"
+	},
+	"Yev strToUpperCase": {
+		"prefix": "strtou",
+		"body": ["strtoupper(${1})",
+		],
+		"description": "Funcion para convertir a mayusculas"
+	},
+	"Yev UCwords": {
+		"prefix": "ucw",
+		"body": ["ucwords(${1})",
+		],
+		"description": "Funcion para convertir a capitalizado"
+	},
+
+	//Manejo de arrays
+	"Yev count": {
+		"prefix": "cou",
+		"body": ["count(${1})",
+		],
+		"description": "Funcion conocer la longitud de un array o string"
+	},
+
+	"Yev isArray": {
+		"prefix": "isa",
+		"body": ["is_array(${1})",
+		],
+		"description": "Funcion conocer si es un array"
+	},
+	
+	//Manejo de fechas
+	"Yev MkTime": {
+		"prefix": "mkt",
+		"body": ["mktime(${1:Hora}, ${2:Minutos}, ${3:Segundos}, ${4:Dia}, ${5:Mes}, ${6:Año}) ${7://Recuerda que el 0 es para t en (x-1) y 1 es t en x}",
+		],
+		"description": "Funcion crear una fecha"
+	},
+	
+	"Yev time": {
+		"prefix": "tim",
+		"body": ["time() ${1://Devuelve en decimal}",
+		],
+		"description": "Funcion devolver el tiempo de ahora"
+	},
+	"Yev getdate": {
+		"prefix": "getdat",
+		"body": ["print_r(getdate()); //Devuelve la fecha en array asociativo",
+		],
+		"description": "Funcion formatear fecha (Por defecto en formato SQL)"
+	},
+
+	"Yev date SQLFormat": {
+		"prefix": "dat",
+		"body": ["date('${1:Y-m-d H:i:s}', time()${2: 'para fecha actual o mktime() para una fecha concreta'}); //Formato para SQL",
+		],
+		"description": "Funcion formatear fecha (Por defecto en formato SQL)"
+	},
+
+	"Yev dateDefaultSet": {
+		"prefix": "dated",
+		"body": ["date_default_timezone_set('${1:europe/madrid}');",
+		],
+		"description": "Funcion poner de donde debe sacar la fecha (util para servidores por si están en otro pais)"
+	},
+	"Yev dateDefaultGet": {
+		"prefix": "datede",
+		"body": ["date_default_timezone_get();",
+		],
+		"description": "Funcion para saber de donde saca la fecha (util para servidores por si están en otro pais)"
+	},
+	
+	//Manejo URLs
+	"Yev issetGet?": {
+		"prefix": "isget",
+		"body": ["$$_GET[${1}] ?? ${2} //Si es verdadero devuelve el get, sino lo que le diga",
+		],
+		"description": "Funcion para saber si get contiene algo (entonces devuelve el get) o es nulo (entonces devuelve lo que yo le haya dicho)"
+	},
+	"Yev issetPost?": {
+		"prefix": "ispost",
+		"body": ["$$_POST[${1}] ?? ${2} //Si es verdadero devuelve el get, sino lo que le diga",
+		],
+		"description": "Funcion para saber si post contiene algo (entonces devuelve el get) o es nulo (entonces devuelve lo que yo le haya dicho)"
+	},
+	
+	//Math
+	"Yev rand": {
+		"prefix": "ran",
+		"body": ["rand(${1:min}, ${2:max});",
+		],
+		"description": "Funcion Random"
+	},
+	
+	"Yev round": {
+		"prefix": "rou",
+		"body": ["round(${1:numero}, ${2:'En (+) redondea despues de la coma y en (-) redondea antes de la coma'}, PHP_ROUND_HALF_${3:' {UP (Por defecto), DOWN, EVEN (Al num par), ODD(Al num impar)'}});",
+		],
+		"description": "Funcion Round"
+	},
+
+	"Yev sqrt": {
+		"prefix": "sqr",
+		"body": ["sqrt(${1});",
+		],
+		"description": "Funcion Raiz"
+	},
+
+	"Yev pow": {
+		"prefix": "pow",
+		"body": ["sqrt(${1:base}, ${2});",
+		],
+		"description": "Funcion Exponente"
+	},
+
+	"Yev abs": {
+		"prefix": "abs",
+		"body": ["abs(${1});",
+		],
+		"description": "Funcion Valor Absoluto"
+	},
+	
+	"Yev pi": {
+		"prefix": "pi",
+		"body": ["pi();",
+		],
+		"description": "Funcion PI"
+	},
+	
+	"Yev cos": {
+		"prefix": "cos",
+		"body": ["cos(${1});",
+		],
+		"description": "Funcion Coseno"
+	},
+	
+	// Creacion funcion
+	"Yev funcion": {
+		"prefix": "fun",
+		"body": ["function ${2}($${3:var}){",
+			"\t${4:// Instrucción}",
+			"}",
+		],
+		"description": "Funcion"
+	},
+	"Yev funcionPasoParam": {
+		"prefix": "func",
+		"body": ["function ${2}(&$${3:var}){",
+			"\t${4:// La variable que se le pase cambiara de valor al salir}",
+			"}",
+		],
+		"description": "Funcion con paso por parametro"
+	},
+
+//!Control de flujo
+	"Yev if": {
+		"prefix": "if",
+		"body": ["if(${1}){",
+			"\t${2:;}",
+			"}",
+		],
+		"description": "Control de flujo if"
+	},
+	"Yev ifElse": {
+		"prefix": "ife",
+		"body": ["if(${1}){",
+			"\t${2:;}",
+			"} else {",
+			"\t${3:;}",
+			"}",
+		],
+		"description": "Control de flujo if else"
+	},
+	"Yev else": {
+		"prefix": "els",
+		"body": ["else(${1}){",
+			"\t${2:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo else"
+	},
+	"Yev elseIf": {
+		"prefix": "else if",
+		"body": ["elseif(${1}){",
+			"\t${2:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo if else"
+	},
+	"Yev SwitchCase": {
+		"prefix": "swi",
+		"body": ["switch (${1}) {",
+			"\tcase ${2}:",
+			"\t\t${3:// Instrucción};",
+			"\t\tbreak;",
+			"\tcase ${4}:",
+			"\t\t${5:// Instrucción};",
+			"\t\tbreak;",
+			"\tdefault:",
+			"\t\t${6:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo switch case"
+	},
+	
+	"Yev for": {
+		"prefix": "for",
+		"body": ["for( $${1} = ${2}; $${1}${3} ; $${1}${4}) {",
+			"\t${5:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo for"
+	},
+	"Yev fori": {
+		"prefix": "fori",
+		"body": ["for( $$i = ${1}; $$i${2} ; $$i${3}) {",
+			"\t${4:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo fori"
+	},
+	"Yev forj": {
+		"prefix": "forj",
+		"body": ["for( $$j = ${1}; $$j${2} ; $$j${3}) {",
+			"\t${4:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo forj"
+	},
+	"Yev fora": {
+		"prefix": "fora",
+		"body": ["for( $$i = ${1}; $$i < count(${2:Array}); $$i++) {",
+			"\t${3:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo fora"
+	},
+
+	"Yev while": {
+		"prefix": "whi",
+		"body": ["while(${1:condicion}){",
+			"\t${2:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo while"
+	},
+	"Yev doWhile": {
+		"prefix": "do",
+		"body": ["do{",
+			"\t${1:// Instrucción};",
+			"}while(${2:condicion})",
+		],
+		"description": "Control de flujo do while"
+	},
+	
+	"Yev foreach": {
+		"prefix": "fore",
+		"body": ["foreach(${1:Array} as ${2:Variable}){",
+			"\t${3:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo forecach"
+	},
+
+	"Yev foreachClaveValor": {
+		"prefix": "forea",
+		"body": ["foreach(${1:Array} as ${2:$$clave} => ${3:$$valor}){",
+			"\t${4:// Instrucción};",
+			"}",
+		],
+		"description": "Control de flujo forecach"
+	},
+	
+	"Yev tryCatch": {
+		"prefix": "tr",
+		"body": ["try{",
+			"\tif(${1: condición}) throw new Exception('${2:msg}'); // Podemos lanzar nuestro mensaje en el error",
+			"\t${4}",
+			"}catch (Exception $$error){",
+			"echo $$error -> getMessage(); //Imprime el mensaje",
+			"${3:echo '<pre>' . print_r($$error -> getTrace()) . '</pre>'; //Imprimimos de donde viene el mensaje}",
+			"}",
+		],
+		"description": "Control de flujo try catch"
+	},
+	"Yev tryCatchFinally": {
+		"prefix": "try",
+		"body": ["try{",
+			"\tif(${1: condición}) throw new Exception('${2:msg}'); // Podemos lanzar nuestro mensaje en el error",
+			"\t${4}",
+			"}catch (Exception $$error){",
+			"echo $$error -> getMessage(); //Imprime el mensaje",
+			"${3:echo '<pre>' . print_r($$error -> getTrace()) . '</pre>'; //Imprimimos de donde viene el mensaje}",
+			"}finally{",
+			"\t${5:// Instrucción}",
+			"}",
+			
+		],
+		"description": "Control de flujo try catch finally"
+	},
+//!Variables
+	"Yev VariableGlobal": {
+		"prefix": "g",
+		"body": ["global $${1} = ${2}",
+			"${3}",
+		],
+		"description": "Variable Global"
+	},
+
+	"Yev Constante": {
+		"prefix": "d",
+		"body": ["define('${1:NOMBRECTE}', ${2:valorCte}); ",
+			"${3}",
+		],
+		"description": "Constante"
+	},
+
+	"Yev Array": {
+		"prefix": "arr",
+		"body": "array(${1});",
+		"description": "Variable Array"
+	},
+
+	"Yev ArrayAsoc": {
+		"prefix": "arra",
+		"body": "array('${1}' => ${2});",
+		"description": "Variable Array Asociativo"
+	},
+//!Operadores
+	"Yev =": {
+		"prefix": "=",
+		"body": [" = ${1}"],
+		"description": "Operador ="
+	},
+	"Yev ==": {
+		"prefix": "==",
+		"body": [" == ${1}"],
+		"description": "Operador =="
+	},
+	"Yev ===": {
+		"prefix": "===",
+		"body": [" === ${1}"],
+		"description": "Operador ==="
+	},
+	"Yev !=": {
+		"prefix": "!=",
+		"body": [" != ${1}"],
+		"description": "Operador !="
+	},
+	"Yev !==": {
+		"prefix": "!==",
+		"body": [" !== ${1}"],
+		"description": "Operador !=="
+	},
+	"Yev >": {
+		"prefix": ">",
+		"body": [" > ${1}"],
+		"description": "Operador >"
+	},
+	"Yev >=": {
+		"prefix": ">=",
+		"body": [" >= ${1}"],
+		"description": "Operador >="
+	},
+	"Yev <": {
+		"prefix": "<",
+		"body": [" < ${1}"],
+		"description": "Operador <"
+	},
+	"Yev +=": {
+		"prefix": "+=",
+		"body": [" += ${1}"],
+		"description": "Operador +="
+	},
+	"Yev -=": {
+		"prefix": "-=",
+		"body": [" -= ${1}"],
+		"description": "Operador -="
+	},
+	"Yev *=": {
+		"prefix": "*=",
+		"body": [" *= ${1}"],
+		"description": "Operador *="
+	},
+	"Yev /=": {
+		"prefix": "/=",
+		"body": [" /= ${1}"],
+		"description": "Operador /="
+	},
+	"Yev %=": {
+		"prefix": "%=",
+		"body": [" %= ${1}"],
+		"description": "Operador %="
+	},
+	"Yev <=": {
+		"prefix": "<=",
+		"body": [" <= ${1}"],
+		"description": "Operador <="
+	},
+	"Yev +": {
+		"prefix": "+",
+		"body": [" + ${1}"],
+		"description": "Operador +"
+	},
+	"Yev -": {
+		"prefix": "-",
+		"body": [" - ${1}"],
+		"description": "Operador -"
+	},
+	"Yev *": {
+		"prefix": "*",
+		"body": [" * ${1}"],
+		"description": "Operador *"
+	},
+	"Yev /": {
+		"prefix": "/",
+		"body": [" / ${1}"],
+		"description": "Operador /"
+	},
+
+	"Yev ->": {
+		"prefix": "..",
+		"body": ["->${1}"],
+		"description": "Operador ->"
+	},
+
+	"Yev .": {
+		"prefix": ".",
+		"body": [" . ${1}"],
+		"description": "Operador ."
+	},
+	"Yev .=": {
+		"prefix": ".",
+		"body": [" .= ${1}"],
+		"description": "Operador .="
+	},
+
+	"Yev &&": {
+		"prefix": "&",
+		"body": [" && ${1}"],
+		"description": "Operador && (And)"
+	},
+	"Yev ||": {
+		"prefix": "|",
+		"body": [" || ${1}"],
+		"description": "Operador || (Or)"
+	},
+	
+}
