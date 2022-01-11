@@ -467,12 +467,12 @@
 		"description": "Control de flujo else"
 	},
 	"Yev elseIf": {
-		"prefix": "else if",
+		"prefix": "else",
 		"body": ["elseif(${1}){",
 			"\t${2:// Instrucción};",
 			"}",
 		],
-		"description": "Control de flujo if else"
+		"description": "Control de flujo else if"
 	},
 	"Yev SwitchCase": {
 		"prefix": "swi",
