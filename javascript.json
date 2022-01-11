@@ -53,7 +53,7 @@
 
 	"Yev getElementByID": {
 		"prefix": "gete",
-		"body": ["document.getElementByID('${1}')",
+		"body": ["document.getElementById('${1}')",
 
 		],
 		"description": "Funcion constructor"
