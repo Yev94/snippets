@@ -460,8 +460,8 @@
 	},
 	"Yev else": {
 		"prefix": "els",
-		"body": ["else(${1}){",
-			"\t${2:// Instrucción};",
+		"body": ["else{",
+			"\t${1:// Instrucción};",
 			"}",
 		],
 		"description": "Control de flujo else"
