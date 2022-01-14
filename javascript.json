@@ -530,7 +530,7 @@
 	},
 
 	"Yev foreach": {
-		"prefix": "fore",
+		"prefix": ".for",
 		"body": ["${1:array}.forEach(e => ${2});",
 		],
 		"description": "Control de flujo forecach"
