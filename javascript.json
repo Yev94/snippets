@@ -13,6 +13,38 @@
 	// 	"description": "Log output to console"
 	// }
 //!Test
+	"Yev xhr": {
+		"prefix": "xhr",
+		"body": ["let xhr = new XMLHttpRequest();",
+			"const url = '${1}';",
+			"xhr.addEventListener('readystatechange', function(){",
+			"\tif(this.readyState !== 4) return;",
+			"\tif (this.status >= 200 && this.status < 300) {",
+			"\t\t${2}",
+			"\t}",
+			"})",
+			"xhr.open('GET', url, true);",
+			"xhr.send();"
+		],
+		"description": "XHR"
+	},
+	"Yev xhrPost": {
+		"prefix": "xhr",
+		"body": ["let xhr = new XMLHttpRequest();",
+			"const url = '${1}';",
+			"xhr.addEventListener('readystatechange', function(){",
+			"\tif(this.readyState !== 4) return;",
+			"\tif (this.status >= 200 && this.status < 300) {",
+			"\t\t${2}",
+			"\t}",
+			"})",
+			"xhr.open('POST', url, true);",
+			"xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');",
+			"xhr.send(${3://lo que enviamos});",
+		],
+		"description": "XHR"
+	},
+
 	"Yev testExport": {
 		"prefix": "tes",
 		"body": ["module.exports = {${1:Funciones}};",
