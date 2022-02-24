@@ -13,6 +13,28 @@
 	// 	"description": "Log output to console"
 	// }
 //!Test
+	"Yev testExport": {
+		"prefix": "tes",
+		"body": ["module.exports = {${1:Funciones}};",
+		],
+		"description": "Test Export"
+	},
+
+	"Yev testImport": {
+		"prefix": "tes",
+		"body": ["const {${1:Funciones}} = require('${2:Archivo}');",
+			"describe('${1:Funciones}', () => {",
+			"\ttest('${3:Nombre representativo del test}', () => {",
+			"\t\tconst expected = ${4};",
+			"\t\tconst result = ${5};",
+			"\t\texpect(result).toBe(expected);",
+			"\t})",
+			"})",
+		],
+		"description": "Test Export"
+	},
+
+//!Conexiones
 	"Yev xhr": {
 		"prefix": "xhr",
 		"body": ["let xhr = new XMLHttpRequest();",
@@ -45,27 +67,6 @@
 		"description": "XHR"
 	},
 
-	"Yev testExport": {
-		"prefix": "tes",
-		"body": ["module.exports = {${1:Funciones}};",
-		],
-		"description": "Test Export"
-	},
-
-	"Yev testImport": {
-		"prefix": "tes",
-		"body": ["const {${1:Funciones}} = require('${2:Archivo}');",
-			"describe('${1:Funciones}', () => {",
-			"\ttest('${3:Nombre representativo del test}', () => {",
-			"\t\tconst expected = ${4};",
-			"\t\tconst result = ${5};",
-			"\t\texpect(result).toBe(expected);",
-			"\t})",
-			"})",
-		],
-		"description": "Test Export"
-	},
-	
 //!OOP
 	"Yev this": {
 		"prefix": "thi",
@@ -267,6 +268,27 @@
 		"description": "Funcion para buscar el indice de la expresion buscada"
 	},
 
+	"Yev filter": {
+		"prefix": ".fin",
+		"body": [".filter(e => e ${1:>/</==} ${2:eBuscada})",
+		],
+		"description": "Funcion para filtrar la expresion buscada"
+	},
+
+	"Yev every": {
+		"prefix": ".eve",
+		"body": [".every(e => {return e ${1:>/</==} ${2:eBuscada}})",
+		],
+		"description": "Funcion para devolver si todos los elementos cumplen una condición"
+	},
+
+	"Yev some": {
+		"prefix": ".som",
+		"body": [".some(e => {return e ${1:>/</==} ${2:eBuscada}})",
+		],
+		"description": "Funcion para devolver si algunos los elementos cumplen una condición"
+	},
+
 	"Yev unshift": {
 		"prefix": ".uns",
 		"body": [".unshift(${1:valor a añadir al principio})",
@@ -275,10 +297,10 @@
 	},
 
 	"Yev push": {
-		"prefix": ".pop",
-		"body": [".pop()",
+		"prefix": ".pu",
+		"body": [".push(${1:elemento})",
 		],
-		"description": "Funcion para eliminar val al final del array"
+		"description": "Funcion para añadir val al final del array"
 	},
 
 	"Yev shift": {
@@ -352,7 +374,34 @@
 		],
 		"description": "Funcion para pasar por un funcion cada elemento del array"
 	},
+
+	"Yev flat": {
+		"prefix": ".fl",
+		"body": [".flat(${1:dimensiones})",],
+		"description": "Funcion aplanar un array"
+	},
 	
+	//Manejo de objetos
+	"Yev keys": {
+		"prefix": "key",
+		"body": ["let keys{1:Objeto} = Object.key(${1:objeto})",],
+		"description": "Funcion para sacar las claves del objeto"
+	},
+
+	"Yev values": {
+		"prefix": "val",
+		"body": ["let values{1:Objeto} = Object.values(${1:objeto})",],
+		"description": "Funcion para sacar los valores del objeto"
+	},
+
+	"Yev entries": {
+		"prefix": "ent",
+		"body": ["let entries{1:Objeto} = Object.entries(${1:objeto})",
+			"entries{1:Objeto}.forEach(([key, val]) => console.log[key, val])"
+		],
+		"description": "Funcion para sacar claves y valores del objeto"
+	},
+
 	//Manejo de fechas
 	"Yev date": {
 		"prefix": "dat",
@@ -452,15 +501,36 @@
 		"description": "Funcion para sacar coseno"
 	},
 	
-	//Creacion
+	//Informativas
+	"Yev setTimeout": {
+		"prefix": "sett",
+		"body": ["setTimeout(() => {",
+			"\t${2://Instrucción; }",
+			"}, ${1:miliSec});"
+		],
+		"description": "Funcion para poner un tiempo de espera"
+	},
+
+	//Creación
 	"Yev function": {
 		"prefix": "fun",
 		"body": ["function ${1}(${2}){",
 			"\t${3:// Instrucción}",
 			"}"
 		],
-		"description": "Funcion para sacar coseno"
+		"description": "Creación función"
 	},
+
+	"Yev ;(()=>{})();": {
+		"prefix": "(())",
+		"body": ["(() => {",
+			"\t${1://Instrucción}",
+		"})();${2}",
+		],
+		"description": "Creación función auto-ejecutable"
+	},
+
+
 
 //!Control de flujo
 	"Yev if": {
@@ -544,6 +614,14 @@
 		],
 		"description": "Control de flujo fora"
 	},
+
+	"Yev for Object": {
+		"prefix": "foro",
+		"body": ["for(let key in {1:Objeto}){console.log(key, obj[key])}",
+		],
+		"description": "Funcion para sacar claves y valores del objeto"
+	},
+
 	"Yev while": {
 		"prefix": "whi",
 		"body": ["while(${1:condicion}){",
@@ -623,11 +701,12 @@
 	},
 
 //!Operadores
-	"Yev =": {
+	"Yev = () => {": {
 		"prefix": "=",
-		"body": [" = ${1}"],
-		"description": "Operador ="
+		"body": ["= () => {"],
+		"description": "Operador () => {"
 	},
+
 	"Yev ==": {
 		"prefix": "==",
 		"body": [" == ${1}"],
