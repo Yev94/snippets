@@ -353,8 +353,8 @@
 	},
 
 	"Yev target": {
-		"prefix": "e.t",
-		"body": ["e.target;",
+		"prefix": ".t",
+		"body": [".target${1};",
 		],
 		"description": "Quién ha disparado el evento"
 	},
