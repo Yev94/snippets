@@ -337,8 +337,8 @@
 	},
 
 	"Yev addEventListener": {
-		"prefix": "add",
-		"body": ["addEventListener('${1:evento}', () =>  {",
+		"prefix": ".add",
+		"body": [".addEventListener('${1:evento}', () =>  {",
 			"\t${2:función}",
 			"});",
 		],
