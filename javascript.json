@@ -35,6 +35,7 @@
 	},
 
 //!Conexiones
+	//Conexión con servidor
 	"Yev xhr": {
 		"prefix": "xhr",
 		"body": ["let xhr = new XMLHttpRequest();",
@@ -67,6 +68,58 @@
 		"description": "XHR"
 	},
 
+	//Conexión entre archivos
+	"Yev importFun": {
+		"prefix": "imp",
+		"body": ["import {${1:Funciones}} from '${2:Ruta}'",
+		],
+		"description": "Funcion this"
+	},
+
+	"Yev importAll": {
+		"prefix": "impo",
+		"body": ["import * as {${1:Alias}} from '${2:Ruta}'",
+		],
+		"description": "Funcion this"
+	},
+
+	"Yev importTodo": {
+		"prefix": "ex",
+		"body": ["export ",
+		],
+		"description": "Export"
+	},
+	
+	//Conexiones asíncronas
+	"Yev async": {
+		"prefix": "as",
+		"body": ["async () => {",
+			"\t${1}",
+			"}",
+		],
+		"description": "Async"
+	},
+
+	"Yev await": {
+		"prefix": "aw",
+		"body": ["await "
+		],
+		"description": "await"
+	},
+
+	"Yev Promise": {
+		"prefix": "prom",
+		"body": ["return new Promise((resolve, reject) => {",
+			"\t${1://Instrucción que devolverá si todo va bien}",
+			"\tresolve(v${2:arQueDevolverá si todo va bien});",
+			"\t${3://Instrucción que devolverá si todo va mal}",
+			"\treject(${4:varQueDevolverá si todo va ma}l);",
+			"})"
+		],
+		"description": "Promise"
+	},
+
+
 //!OOP
 	"Yev this": {
 		"prefix": "thi",
@@ -84,12 +137,498 @@
 		"description": "Funcion constructor"
 	},
 
-	"Yev getElementByID": {
+	"Yev document": {
+		"prefix": "d",
+		"body": ["document.",
+		],
+		"description": "Objeto Document"
+	},
+
+	//HTMLGeneral -> Selección -> Búsqueda
+	"Yev document.getElementByID": {
 		"prefix": "gete",
-		"body": ["document.getElementById('${1}')",
+		"body": ["document.getElementById('${1}');",
+		],
+		"description": "Buscar DOM por ID"
+	},
+
+	"Yev document.getElementsByName": {
+		"prefix": "getel",
+		"body": ["document.getElementsByName('${1}')${2:[0]};",
+		],
+		"description": "Buscar DOM por Name"
+	},
+
+	"Yev document.getElementsByTagName": {
+		"prefix": "getel",
+		"body": ["document.getElementsByTagName('${1}')${2:[0]};",
+		],
+		"description": "Buscar DOM por TagName"
+	},
+
+	"Yev document.querySelector": {
+		"prefix": "qu",
+		"body": ["document.querySelector('${1}');",
+		],
+		"description": "Buscar DOM por Selector CSS"
+	},
+
+	"Yev document.querySelectorAll": {
+		"prefix": "que",
+		"body": ["document.querySelectorAll('${1}')${2:[0]};",
+		],
+		"description": "Buscar DOM por Selector CSS"
+	},
+
+	"Yev Forms": {
+		"prefix": "form",
+		"body": ["document.forms${1:[0]};",
+		],
+		"description": "Buscar DOM por Form"
+	},
+	
+	//HTMLGeneral -> Selección -> Nodos
+	"Yev childNodes": {
+		"prefix": "chil",
+		"body": ["childNodes;${1: //Devuelve Arr con #text}",
+		],
+		"description": "Seleccionar elementos hijos"
+	},
+
+	"Yev children": {
+		"prefix": "chi",
+		"body": ["children;${1: //Devuelve Obj sin #text}",
+		],
+		"description": "Seleccionar elementos hijos"
+	},
+
+	"Yev firstElementChild": {
+		"prefix": "fir",
+		"body": ["firstElementChild;",
+		],
+		"description": "Seleccionar primer elemento hijo"
+	},
+
+	"Yev lastElementChild": {
+		"prefix": "las",
+		"body": ["lastElementChild;",
+		],
+		"description": "Seleccionar último elemento hijo"
+	},
+	"Yev firstChild": {
+		"prefix": "firs",
+		"body": ["firstChild;",
 
 		],
-		"description": "Funcion constructor"
+		"description": "Seleccionar primer hijo"
+	},
+
+	"Yev lastChild": {
+		"prefix": "last",
+		"body": ["lastChild;",
+		],
+		"description": "Seleccionar último hijo"
+	},
+
+	"Yev nextSibling": {
+		"prefix": "next",
+		"body": ["nextSibling;${1: //Puede devolver #text}",
+		],
+		"description": "Seleccionar el siguiente hermano"
+	},
+
+	"Yev previousSibling": {
+		"prefix": "next",
+		"body": ["previousSibling;${1: //Puede devolver #text}",
+		],
+		"description": "Seleccionar el anterior hermano"
+	},
+
+	"Yev nextElementSibling": {
+		"prefix": "next",
+		"body": ["nextElementSibling;",
+		],
+		"description": "Seleccionar el siguiente elemento hermano"
+	},
+
+	"Yev previousElementSibling": {
+		"prefix": "next",
+		"body": ["previousElementSibling;",
+		],
+		"description": "Seleccionar el anterior elemento hermano"
+	},
+
+	"Yev parentNode": {
+		"prefix": "par",
+		"body": ["parentNode;${1: //Puede devolver #text}",
+		],
+		"description": "Seleccionar padre"
+	},
+
+	"Yev innerHTML": {
+		"prefix": "inn",
+		"body": ["innerHTML;",
+		],
+		"description": "Selecciona y escribe lo que hay dentro de un elemento"
+	},
+
+	"Yev outerHTML": {
+		"prefix": "out",
+		"body": ["outerHTML;",
+		],
+		"description": "Selecciona y escribe lo que hay dentro de un elemento y el elemento"
+	},
+
+	"Yev textContent": {
+		"prefix": "tex",
+		"body": ["textContent;${1: //Selecciona contenido elemento, evitando etiquetas HTML}",
+		],
+		"description": "Selecciona contenido elemento, evitando etiquetas HTML"
+	},
+
+	"Yev nodeName": {
+		"prefix": "nod",
+		"body": ["nodeName;${1: //Ver de qué tipo es el elemento}",
+		],
+		"description": "Ver de qué tipo es el elemento"
+	},
+
+	"Yev attributes": {
+		"prefix": "att",
+		"body": ["attributes;",
+		],
+		"description": "Ver y dar valor al tributo de un elemento"
+	},
+
+	"Yev nodeValue": {
+		"prefix": "nodeV",
+		"body": ["${1:atributo.}nodeValue;",
+		],
+		"description": "Cambiar valor al tributo de un elemento"
+	},
+
+	"Yev classList": {
+		"prefix": "cla",
+		"body": ["classList;",
+		],
+		"description": "Acceder a la lista de clases de un elemento"
+	},
+
+	"Yev classList Add": {
+		"prefix": "clas",
+		"body": ["classList.add('.${1}');",
+		],
+		"description": "Añade a la lista de clases de un elemento"
+	},
+
+	"Yev classList Remove": {
+		"prefix": "clas",
+		"body": ["classList.remove('.${1}');",
+		],
+		"description": "Elimina de la lista de clases de un elemento"
+	},
+	
+	//HTMLGeneral -> Eventos
+	"Yev focus": {
+		"prefix": "foc",
+		"body": ["focus();",
+		],
+		"description": "Pone el foco en el elemento"
+	},
+
+	"Yev addEventListener": {
+		"prefix": "add",
+		"body": ["addEventListener('${1:evento}', () =>  {",
+			"\t${2:función}",
+			"});",
+		],
+		"description": "Añade evento a la escucha"
+	},
+
+	"Yev preventDefault": {
+		"prefix": "e.p",
+		"body": ["e.preventDefault();",
+		],
+		"description": "Prevenir que se dispare el evento"
+	},
+
+	"Yev target": {
+		"prefix": "e.t",
+		"body": ["e.target;",
+		],
+		"description": "Quién ha disparado el evento"
+	},
+
+	"Yev evento blur": {
+		"prefix": "evbl",
+		"body": ["blur",
+		],
+		"description": "Evento al quitar el foco"
+	},
+	
+	//HTMLGeneral -> Estilos
+	"Yev cssText": {
+		"prefix": "css",
+		"body": ["cssText",
+		],
+		"description": "Agregar estilo CSS en linea"
+	},
+
+	"Yev width": {
+		"prefix": "wid",
+		"body": ["width",
+		],
+		"description": "Agregar width en linea"
+	},
+
+	"Yev height": {
+		"prefix": "hei",
+		"body": ["height",
+		],
+		"description": "Agregar height en linea"
+	},
+
+	"Yev backgroundColor": {
+		"prefix": "back",
+		"body": ["backgroundColor",
+		],
+		"description": "Agregar backgroundColor en linea"
+	},
+	
+	//HTMLGeneral -> Crear e insertar
+	"Yev createElement": {
+		"prefix": "cre",
+		"body": ["document.createElement('${1}')",
+		],
+		"description": "Crea un elemento del DOM"
+	},
+
+	
+	"Yev setAttribute": {
+		"prefix": "cre",
+		"body": ["setAttribute('${1:Attribute}, ${2:Value}')",
+		],
+		"description": "Añade atributo a un elemento del DOM"
+	},
+	
+	"Yev createTextNode": {
+		"prefix": "crea",
+		"body": ["document.createTextNode('${1}')",
+		],
+		"description": "Crea un elemento tipo texto del DOM"
+	},
+	
+	"Yev insertAdjacentHTML": {
+		"prefix": "ins",
+		"body": ["insertAdjacentHTML('beforeend', ${1:element});",
+		],
+		"description": "Inserta un elemento al DOM"
+	},
+	
+	"Yev appendChild": {
+		"prefix": "appe",
+		"body": ["appendChild(${1:element});",
+		],
+		"description": "Inserta un elemento al DOM"
+	},
+	
+	"Yev insertAfter": {
+		"prefix": "inser",
+		"body": ["insertAfter(${1:hermanoExistente}, ${2:hermanoNuevo});",
+		],
+		"description": "Inserta un elemento hermano al DOM"
+	},
+	
+	"Yev insertBefore": {
+		"prefix": "inser",
+		"body": ["insertBefore(${1:hermanoExistente}, ${2:hermanoNuevo});",
+		],
+		"description": "Inserta un elemento hermano al DOM"
+	},
+
+	"Yev cloneNode": {
+		"prefix": "inser",
+		"body": ["cloneNode(${1:Deep Bool});",
+		],
+		"description": "Clona un elemento, si true clona también todo lo de dentro"
+	},
+	
+	//HTMLGeneral -> Eliminar y reemplazar en
+	"Yev removeChild": {
+		"prefix": "rem",
+		"body": ["removeChild(${1:elementoHijo});",
+		],
+		"description": "Elimina un Hijo del elemento del DOM"
+	},
+
+	"Yev replaceChild": {
+		"prefix": "rep",
+		"body": ["replaceChild(${1:elementoHijoExistente}, ${2:elementoHijoNuevo});",
+		],
+		"description": "Reemplaza un Hijo del elemento del DOM"
+	},
+
+	//HTMLFormulario -> General
+	"Yev reset": {
+		"prefix": "res",
+		"body": ["reset();",
+		],
+		"description": "Resetea un formulario"
+	},
+	
+	"Yev submit": {
+		"prefix": "res",
+		"body": ["submit(); //name botón siempre != submit",
+		],
+		"description": "Submit registros formulario"
+	},
+
+	//HTMLFormulario -> Inputs
+	"Yev evento input": {
+		"prefix": "evin",
+		"body": ["input",
+		],
+		"description": "Evento intro información form"
+	},
+	
+	"Yev evento change": {
+		"prefix": "evch",
+		"body": ["change",
+		],
+		"description": "Evento cambiar información form"
+	},
+	
+	//HTMLFormulario -> APIform
+	"Yev evento setCustomValidity": {
+		"prefix": "setC",
+		"body": ["setCustomValidity = '${1:Mensaje Personalizado}'",
+		],
+		"description": "Crear mensaje personalizado en error al intro info form"
+	},
+	
+	"Yev evento invalid": {
+		"prefix": "evin",
+		"body": ["invalid",
+		],
+		"description": "Evento información invalida form"
+	},
+	
+	//Ventanas y periféricos -> Ventana Explorador
+	"Yev window": {
+		"prefix": "w",
+		"body": ["window.",
+		],
+		"description": "Objeto Window"
+	},
+
+	"Yev window.open": {
+		"prefix": "ope",
+		"body": ["window.open(URL, '${1:NombreInventado}', '${2:Config}')",
+		],
+		"description": "Window.opn"
+	},
+
+	"Yev window.close": {
+		"prefix": "ope",
+		"body": ["window.close()",
+		],
+		"description": "Window.close"
+	},
+
+	"Yev window.onload": {
+		"prefix": "onl",
+		"body": ["window.onload = () => {",
+			"\t${1:Función}",
+			"}",
+		],
+		"description": "Window.onload"
+	},
+
+	//Ventanas y periféricos -> Ratón
+	"Yev evento click": {
+		"prefix": "evcl",
+		"body": ["click",
+		],
+		"description": "Evento al hacer click con el ratón"
+	},
+
+	"Yev button": {
+		"prefix": "but",
+		"body": ["e.button //{0, 1, 2} = {izq, centro, dcha}",
+		],
+		"description": "Botón del ratón que dispara el evento"
+	},
+
+	"Yev evento mouseover": {
+		"prefix": "evmou",
+		"body": ["mouseover",
+		],
+		"description": "Evento al hacer mouseover con el ratón"
+	},
+
+	"Yev evento mouseout": {
+		"prefix": "evmou",
+		"body": ["mouseout",
+		],
+		"description": "Evento al hacer mouseout con el ratón"
+	},
+
+	"Yev evento mousedown": {
+		"prefix": "evmou",
+		"body": ["mousedown",
+		],
+		"description": "Evento al hacer mousedown con el ratón"
+	},
+
+	"Yev evento mouseup": {
+		"prefix": "evmou",
+		"body": ["mouseup",
+		],
+		"description": "Evento al hacer mouseup con el ratón"
+	},
+
+	"Yev evento contextmenu": {
+		"prefix": "evco",
+		"body": ["contextmenu",
+		],
+		"description": "Evento al sacar el menú contextual"
+	},
+
+	//Ventanas y periféricos -> Ratón
+	"Yev evento keydown": {
+		"prefix": "evmou",
+		"body": ["keydown",
+		],
+		"description": "Evento al hacer keydown con el teclado"
+	},
+
+	"Yev evento keyup": {
+		"prefix": "evmou",
+		"body": ["keyup",
+		],
+		"description": "Evento al hacer keyup con el teclado"
+	},
+
+	"Yev evento keypress": {
+		"prefix": "evmou",
+		"body": ["keypress",
+		],
+		"description": "Evento al hacer keypress con el teclado"
+	},
+
+	"Yev key": {
+		"prefix": "ke",
+		"body": ["e.key",
+		],
+		"description": "Botón del teclado que dispara el evento"
+	},
+	
+	//URL
+	"Yev evento hashchange": {
+		"prefix": "evha",
+		"body": ["hashchange",
+		],
+		"description": "Evento al cambiar la URL del navegador"
 	},
 
 //!Funciones
@@ -590,7 +1129,7 @@
 		],
 		"description": "Control de flujo for"
 	},
-	"Yev fori": {
+	"Yev for i": {
 		"prefix": "fori",
 		"body": ["for(let $i = ${1}; $i${2} ; $i${3}) {",
 			"\t${4:// Instrucción};",
@@ -598,7 +1137,7 @@
 		],
 		"description": "Control de flujo fori"
 	},
-	"Yev forj": {
+	"Yev for j": {
 		"prefix": "forj",
 		"body": ["for(let $j = ${1}; $j${2} ; $j${3}) {",
 			"\t${4:// Instrucción};",
@@ -606,7 +1145,7 @@
 		],
 		"description": "Control de flujo forj"
 	},
-	"Yev fora": {
+	"Yev for Array": {
 		"prefix": "fora",
 		"body": ["for(let $i = ${1}; $i < ${2:Array}.length; $i++) {",
 			"\t${3:// Instrucción};",
