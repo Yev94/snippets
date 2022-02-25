@@ -1240,9 +1240,12 @@
 	},
 
 //!Operadores
-	"Yev = () => {": {
-		"prefix": "=",
-		"body": ["= () => {"],
+	"Yev () => {": {
+		"prefix": "(",
+		"body": ["(() => {",
+			"\t${1:instrucción}",
+			"}",
+		],
 		"description": "Operador () => {"
 	},
 
