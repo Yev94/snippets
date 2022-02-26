@@ -166,6 +166,13 @@
 		"description": "Buscar DOM por TagName"
 	},
 
+	"Yev document.getElementsByClassName": {
+		"prefix": "getel",
+		"body": ["document.getElementsByClassName('${1}')${2:[0]};",
+		],
+		"description": "Buscar DOM por TagName"
+	},
+
 	"Yev document.querySelector": {
 		"prefix": "qu",
 		"body": ["document.querySelector('${1}');",
