@@ -255,7 +255,7 @@
 	//Para mandar escritos
 	"Yev echo": {
 		"prefix": "e",
-		"body": ["echo ${1};",
+		"body": ["echo ${1}; ${2:exit();}",
 			"",
 		],
 		"description": "Funcion echo"
@@ -263,9 +263,16 @@
 
 	"Yev print_r": {
 		"prefix": "p",
-		"body": ["print_r(${1:Array)",
+		"body": ["print_r(${1:Array); ${2:exit();",
 		],
-		"description": "Funcion echo"
+		"description": "Funcion print_r"
+	},
+
+	"Yev $": {
+		"prefix": "s",
+		"body": ["$",
+		],
+		"description": "$"
 	},
 
 	//Manejo de strings
