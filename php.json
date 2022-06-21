@@ -255,7 +255,7 @@
 	//Para mandar escritos
 	"Yev echo": {
 		"prefix": "e",
-		"body": ["echo ${1}; ${2:exit();}",
+		"body": ["exit();",
 			"",
 		],
 		"description": "Funcion echo"
